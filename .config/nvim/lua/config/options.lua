@@ -7,6 +7,8 @@ vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
 vim.opt.number = true
+-- Pour retirer le numero decroissant des lignes
+-- vim.opt.relativenumber = false
 
 vim.opt.title = true
 vim.opt.autoindent = true
