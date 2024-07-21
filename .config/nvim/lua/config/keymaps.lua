@@ -2,9 +2,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Add any additional keymaps here
 
--- Pourquoi pas a tester
-local discipline = require("craft.discipline")
-discipline.cowboy()
+-- pas interessant
+-- local discipline = require("craft.discipline")
+-- discipline.cowboy()
 
 
 local keymap = vim.keymap
