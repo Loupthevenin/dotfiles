@@ -16,6 +16,10 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zi ice from'gh-r' as'program' sbin'**/eza -> eza' atclone'cp -vf completions/eza.zsh _eza'
+zi light eza-community/eza
+zi ice has'eza' atinit'AUTOCD=1'
+zi light z-shell/zsh-eza
 
 # Load completions
 autoload -U compinit && compinit
@@ -27,7 +31,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # History
-HISTSIZE=5000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -46,3 +50,20 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
+alias py="python3"
+alias python="python3"
+
+alias vim="nvim"
+alias lvim="vim"
+
+alias ls='eza --icons=always'
+alias ll='eza --all --long --icons=always'
+alias tree='eza --tree --icons=always'
+
+
+# PATH EXPORTS
+export EDITOR=nvim
+
+export PATH="bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
