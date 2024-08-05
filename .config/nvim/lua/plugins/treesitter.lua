@@ -23,6 +23,7 @@ return {
                 "bash",
                 "json",
                 "c",
+				"make"
 			},
 
 			-- matchup = {
