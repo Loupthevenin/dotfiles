@@ -25,3 +25,13 @@
 - [Nerd fonts](https://www.nerdfonts.com/) Jetbrain Mono nerd
 - [Eza](https://github.com/eza-community/eza) - `ls` replacement
 - [fzf](https://github.com/PatrickF1/fzf.fish) - Interactive filtering
+
+## Installing
+
+- neovim
+- nerdfont
+- ripgrep
+- wezterm
+- zsh
+- tmux
+- fzf
