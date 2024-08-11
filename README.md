@@ -31,7 +31,29 @@
 - neovim
 - nerdfont
 - ripgrep
-- wezterm
+- wezterm/Alacritty
 - zsh
 - tmux
 - fzf
+
+## Links
+
+### Configs
+
+```bash
+git clone https://github.com/Loupthevenin/dotfiles.git ~/dotfiles
+ln -s ~/dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/dotfiles/.config/tmux ~/.config/tmux
+```
+
+### ZSH
+
+```bash
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+```
+
+### Scripts
+
+```bash
+
+```
