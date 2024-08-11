@@ -50,6 +50,12 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
+alias t="tmux"
+alias tl="tmux ls"
+alias tad="tmux attach -d -t"
+alias ts="tmux new-session -s"
+alias tkss="tmux kill-session -t"
+
 alias py="python3"
 alias python="python3"
 
