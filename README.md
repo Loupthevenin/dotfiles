@@ -44,6 +44,7 @@
 git clone https://github.com/Loupthevenin/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/dotfiles/.config/tmux ~/.config/tmux
+ln -s ~/dotfiles/.config/wezterm ~/.config/wezterm
 ```
 
 ### ZSH
@@ -57,3 +58,17 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ```bash
 
 ```
+
+## Shortcuts
+
+### Neovim
+
+### Wezterm
+
+### Tmux
+
+#### Actions
+
+| Keys                         | Action     |
+| ---------------------------- | ---------- |
+| <kbd>Ctrl</kbd>+<kbd>T</kbd> | action key |
