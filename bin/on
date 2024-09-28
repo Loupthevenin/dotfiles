@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+if [ -z "$1" ]; then
+  echo "Error: A file name must be set"
+  exit 1
+fi
+
+file_name="$1"
+if [[ "${file_name}" == "!"* ]]; then
+    formatted_file_name="${file_name:1}.md"
+else
+    formatted_file_name="$(date "+%Y%m%d%H%M") ${file_name}.md"
+fi
+
+cd ~/obsidian/Loup || { echo "Error: Directory ~/obsidian/Loup not found"; exit 1; }
+
+touch "05 - Fleeting/${formatted_file_name}"
+nvim "05 - Fleeting/${formatted_file_name}"

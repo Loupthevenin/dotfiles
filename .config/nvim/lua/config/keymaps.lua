@@ -73,3 +73,34 @@ keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
 end, opts)
 
+-----------
+-- Obsidian
+-----------
+
+--- Path vers coffre Obsidian
+local obsidian_vault_dir = "~/obsidian/Loup"
+
+-- navigate to vault
+keymap.set("n", "<leader>oo", ":cd " .. obsidian_vault_dir .. "<cr>", { silent = true })
+
+-- create note
+keymap.set("n", "<leader>on", function()
+	vim.cmd("ObsidianNew")
+
+	vim.schedule(function()
+		local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]
+		if first_line and vim.startswith(first_line, "#") then
+			vim.api.nvim_buf_set_lines(0, 0, 1, false, {})
+		end
+	end)
+end, opts)
+-- strip date from note title and whitespace
+vim.keymap.set("n", "<leader>of", ":s/^# \\d\\{12\\} \\(.*\\)$/# \\1/<CR>", opts)
+
+-- convert note to template
+keymap.set("n", "<leader>ot", ":ObsidianTemplate <cr>")
+keymap.set("n", "<leader>otn", ":ObsidianTemplate Template-Note<cr>")
+
+-- search for files in full vault
+keymap.set("n", "<leader>os", ":Telescope find_files search_dirs={" .. obsidian_vault_dir .. "}<cr>", { silent = true })
+keymap.set("n", "<leader>oz", ":Telescope live_grep search_dirs={" .. obsidian_vault_dir .. "}<cr>", { silent = true })

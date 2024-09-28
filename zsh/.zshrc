@@ -66,6 +66,7 @@ alias ls='eza --icons=always'
 alias ll='eza --all --long --icons=always'
 alias tree='eza --tree --icons=always'
 
+alias oo='cd ~/obsidian/Loup'
 
 # PATH EXPORTS
 export EDITOR=nvim
