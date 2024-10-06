@@ -1,5 +1,5 @@
 return {
-    -- tools
+	-- tools
 	{
 		"williamboman/mason.nvim",
 		opts = function(_, opts)
@@ -10,11 +10,11 @@ return {
 				"shellcheck",
 				"shfmt",
 				"css-lsp",
-                "clangd",
+				"clangd",
 				"clang-format",
-                "python-lsp-server",
-                "bash-language-server",
-                "cmake-language-server",
+				"python-lsp-server",
+				"bash-language-server",
+				"cmake-language-server",
 			})
 		end,
 	},
@@ -147,9 +147,19 @@ return {
 					},
 				},
 				clangd = {
+					enabled = true,
+					on_attach = function(client, _bufnr)
+						-- Désactive le formateur LSP
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentRangeFormattingProvider = false
+					end,
 					cmd = { "clangd", "--background-index", "--clang-tidy" },
 					root_dir = function(...)
-						return require("lspconfig.util").root_pattern(".git", "compile_commands.json", "compile_flags.txt")(...)
+						return require("lspconfig.util").root_pattern(
+							".git",
+							"compile_commands.json",
+							"compile_flags.txt"
+						)(...)
 					end,
 					settings = {
 						clangd = {
@@ -164,10 +174,10 @@ return {
 					settings = {
 						python = {
 							analysis = {
-								typeCheckingMode = "strict",  -- Options: off, basic, strict
+								typeCheckingMode = "strict", -- Options: off, basic, strict
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
-								diagnosticMode = "workspace",  -- Options: openFilesOnly, workspace
+								diagnosticMode = "workspace", -- Options: openFilesOnly, workspace
 							},
 						},
 					},
@@ -176,52 +186,5 @@ return {
 			setup = {},
 		},
 	},
-	-- Norminette format with clang formt + norminette diagnostics
-	-- {
-	-- 	"nvimtools/none-ls.nvim",
-	-- 	event = "LazyFile",
-	-- 	dependencies = { "mason.nvim" },
-	-- 	init = function()
-	-- 	  LazyVim.on_very_lazy(function()
-	-- 		-- register the formatter with LazyVim
-	-- 		LazyVim.format.register({
-	-- 		  name = "none-ls.nvim",
-	-- 		  priority = 200, -- set higher than conform, the builtin formatter
-	-- 		  primary = true,
-	-- 		  format = function(buf)
-	-- 			return LazyVim.lsp.format({
-	-- 			  bufnr = buf,
-	-- 			  filter = function(client)
-	-- 				return client.name == "null-ls"
-	-- 			  end,
-	-- 			})
-	-- 		  end,
-	-- 		  sources = function(buf)
-	-- 			local ret = require("null-ls.sources").get_available(vim.bo[buf].filetype, "NULL_LS_FORMATTING") or {}
-	-- 			return vim.tbl_map(function(source)
-	-- 			  return source.name
-	-- 			end, ret)
-	-- 		  end,
-	-- 		})
-	-- 	  end)
-	-- 	end,
-	-- 	opts = function(_, opts)
-	-- 	  local nls = require("null-ls")
-	-- 	  opts.root_dir = opts.root_dir
-	-- 		or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
-	-- 	  opts.sources = vim.list_extend(opts.sources or {}, {
-	-- 		nls.builtins.formatting.fish_indent,
-	-- 		nls.builtins.diagnostics.fish,
-	-- 		nls.builtins.diagnostics.norminette.with({
-	-- 			command = "norminette",
-	-- 		}),
-	-- 		nls.builtins.formatting.stylua,
-	-- 		nls.builtins.formatting.shfmt,
-	-- 		nls.builtins.formatting.clang_format.with({
-	-- 			extra_args = { "--assume-filename=" .. vim.fn.expand("~/.config/nvim/lua/craft/.clang-format") },
-	-- 		}),
-	-- 	  })
-	-- 	end,
-	--   },
-
 }
+

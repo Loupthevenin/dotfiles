@@ -16,3 +16,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.conceallevel = 0
 	end,
 })
+
+-- Formate on save for 42 norminette
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*.c",
+	callback = function()
+		local current_file = vim.fn.expand("%")
+		os.execute("c_formatter_42 " .. current_file)
+		vim.cmd("edit!")
+	end,
+})
