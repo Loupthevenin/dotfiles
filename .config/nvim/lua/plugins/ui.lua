@@ -1,6 +1,73 @@
 return {
-    -- messages, cmdline and the popupmenu
-    {
+	-- dashboard and full ui
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			dashboard = {
+				sections = {
+					{
+						header = [[
+ ██╗  ██╗███████╗██╗     ██╗      ██████╗     ██╗      ██████╗ ██╗   ██╗██████╗     ██╗
+ ██║  ██║██╔════╝██║     ██║     ██╔═══██╗    ██║     ██╔═══██╗██║   ██║██╔══██╗    ██║
+ ███████║█████╗  ██║     ██║     ██║   ██║    ██║     ██║   ██║██║   ██║██████╔╝    ██║
+ ██╔══██║██╔══╝  ██║     ██║     ██║   ██║    ██║     ██║   ██║██║   ██║██╔═══╝     ╚═╝
+ ██║  ██║███████╗███████╗███████╗╚██████╔╝    ███████╗╚██████╔╝╚██████╔╝██║         ██╗
+ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝         ╚═╝
+						]],
+					},
+					-- {
+					-- 	section = "terminal",
+					-- 	cmd = "find ~/.config/nvim/wallpapers/ -type f -name '*.*' | shuf -n 1 | xargs -I {} /Applications/WezTerm.app/Contents/MacOS/wezterm imgcat {} --width 10",
+					-- 	height = 10,
+					-- 	padding = 10,
+					-- },
+					-- {
+					-- 	section = "terminal",
+					-- 	-- cmd = "find ~/.config/nvim/wallpapers/ -type f -name '*.*' | shuf -n 1 | xargs -I {} chafa {} --format symbols --symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+					-- 	-- cmd = "chafa $(find ~/.config/nvim/wallpapers/ -type f -name '*.*' | shuf -n 1) --format symbols --size 60x17",
+					-- 	height = 10,
+					-- 	padding = 10,
+					-- },
+					{
+						pane = 2,
+						section = "terminal",
+						cmd = "cmatrix",
+						height = 5,
+						padding = 1,
+					},
+					{ section = "keys", gap = 1, padding = 1 },
+					{
+						pane = 2,
+						icon = " ",
+						title = "Recent Files",
+						section = "recent_files",
+						indent = 2,
+						padding = 1,
+					},
+					{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+					{
+						pane = 2,
+						icon = " ",
+						title = "Git Status",
+						section = "terminal",
+						enabled = function()
+							return Snacks.git.get_root() ~= nil
+						end,
+						cmd = "hub status --short --branch --renames",
+						height = 5,
+						padding = 1,
+						ttl = 5 * 60,
+						indent = 3,
+					},
+					{ section = "startup" },
+				},
+			},
+		},
+	},
+	-- messages, cmdline and the popupmenu
+	{
 		"folke/noice.nvim",
 		opts = function(_, opts)
 			table.insert(opts.routes, {
@@ -52,13 +119,13 @@ return {
 			opts.presets.lsp_doc_border = true
 		end,
 	},
-    {
+	{
 		"rcarriga/nvim-notify",
 		opts = {
 			timeout = 5000,
 		},
 	},
-    -- animations
+	-- animations
 	{
 		"echasnovski/mini.animate",
 		event = "VeryLazy",
@@ -68,7 +135,7 @@ return {
 			}
 		end,
 	},
-    -- buffer line
+	-- buffer line
 	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
@@ -95,7 +162,7 @@ return {
 			}
 		end,
 	},
-    -- filename
+	-- filename
 	{
 		"b0o/incline.nvim",
 		dependencies = { "craftzdog/solarized-osaka.nvim" },
@@ -138,21 +205,26 @@ return {
 		},
 		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
 	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		opts = function(_, opts)
-			local logo = [[
-██╗  ██╗███████╗██╗     ██╗      ██████╗     ██╗      ██████╗ ██╗   ██╗██████╗     ██╗
-██║  ██║██╔════╝██║     ██║     ██╔═══██╗    ██║     ██╔═══██╗██║   ██║██╔══██╗    ██║
-███████║█████╗  ██║     ██║     ██║   ██║    ██║     ██║   ██║██║   ██║██████╔╝    ██║
-██╔══██║██╔══╝  ██║     ██║     ██║   ██║    ██║     ██║   ██║██║   ██║██╔═══╝     ╚═╝
-██║  ██║███████╗███████╗███████╗╚██████╔╝    ███████╗╚██████╔╝╚██████╔╝██║         ██╗
-╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝         ╚═╝
-]]
-
-			logo = string.rep("\n", 8) .. logo .. "\n\n"
-			opts.config.header = vim.split(logo, "\n")
-		end,
-	},
+	-- 	{
+	-- 		"nvimdev/dashboard-nvim",
+	-- 		event = "VimEnter",
+	-- 		config = function()
+	-- 			local dashboard = require("dashboard")
+	-- 			local logo = [[
+	-- ██╗  ██╗███████╗██╗     ██╗      ██████╗     ██╗      ██████╗ ██╗   ██╗██████╗     ██╗
+	-- ██║  ██║██╔════╝██║     ██║     ██╔═══██╗    ██║     ██╔═══██╗██║   ██║██╔══██╗    ██║
+	-- ███████║█████╗  ██║     ██║     ██║   ██║    ██║     ██║   ██║██║   ██║██████╔╝    ██║
+	-- ██╔══██║██╔══╝  ██║     ██║     ██║   ██║    ██║     ██║   ██║██║   ██║██╔═══╝     ╚═╝
+	-- ██║  ██║███████╗███████╗███████╗╚██████╔╝    ███████╗╚██████╔╝╚██████╔╝██║         ██╗
+	-- ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝         ╚═╝
+	-- ]]
+	-- 			-- logo = string.rep("\n", 8) .. logo .. "\n\n"
+	-- 			dashboard.setup({
+	-- 				config = {
+	-- 					header = vim.split(logo, "\n"),
+	-- 				},
+	-- 			})
+	-- 		end,
+	-- 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	-- 	},
 }

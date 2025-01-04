@@ -27,7 +27,7 @@ return {
 				"gd",
 				function()
 					-- DO NOT RESUSE WINDOW
-					require("telescope.builtin").lsp_definitions({ reuse_win = false })
+					require("fzf-lua").lsp_definitions({ reuse_win = false })
 				end,
 				desc = "Goto Definition",
 				has = "definition",
@@ -187,4 +187,3 @@ return {
 		},
 	},
 }
-

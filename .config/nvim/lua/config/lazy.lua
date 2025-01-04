@@ -12,34 +12,34 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    spec = {
-        {
-            "LazyVim/LazyVim",
-            import = "lazyvim.plugins",
-            opts = {
-                colorscheme = "solarized-osaka",
-                news = {
-                    lazyvim = true,
-                    neovim = true,
-                },
-            },
-        },
-        -- add LazyVim and import its plugins
+	spec = {
+		{
+			"LazyVim/LazyVim",
+			import = "lazyvim.plugins",
+			opts = {
+				colorscheme = "solarized-osaka",
+				news = {
+					lazyvim = true,
+					neovim = true,
+				},
+			},
+		},
+		-- add LazyVim and import its plugins
 		-- import any extras modules here
-        { import = "lazyvim.plugins.extras.linting.eslint" },
+		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.editor.refactoring" },
-        { import = "lazyvim.plugins.extras.formatting.prettier" },
-        { import = "lazyvim.plugins.extras.lang.json" },
-        { import = "lazyvim.plugins.extras.lang.python" },
-        { import = "lazyvim.plugins.extras.lang.clangd" },
-        -- { import = "lazyvim.plugins.extras.lang.cmake" },
-        -- { import = "lazyvim.plugins.extras.lang.markdown" },
-        { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.lang.json" },
+		{ import = "lazyvim.plugins.extras.lang.python" },
+		{ import = "lazyvim.plugins.extras.lang.clangd" },
+		-- { import = "lazyvim.plugins.extras.lang.cmake" },
+		-- { import = "lazyvim.plugins.extras.lang.markdown" },
+		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		{ import = "lazyvim.plugins.extras.coding.mini-comment" },
-        { import = "plugins" },
-    },
-    defaults = {
+		{ import = "plugins" },
+	},
+	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
 		-- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
 		lazy = false,
@@ -51,7 +51,7 @@ require("lazy").setup({
 	dev = {
 		path = "~/.ghq/github.com",
 	},
-	checker = { enabled = true }, -- automatically check for plugin updates
+	checker = { enabled = false }, -- automatically check for plugin updates
 	performance = {
 		cache = {
 			enabled = true,

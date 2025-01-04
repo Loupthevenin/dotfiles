@@ -27,7 +27,7 @@ return {
 		notes_subdir = "05 - Fleeting",
 		new_notes_location = "notes_subdir",
 
-        note_id_func = function(title)
+		note_id_func = function(title)
 			if string.sub(title, 1, 1) == "!" then
 				return string.sub(title, 2)
 			else
@@ -44,6 +44,8 @@ return {
 			end
 		end,
 
+		ui = { enable = false },
+
 		disable_frontmatter = true,
 		templates = {
 			subdir = "99 - Meta/Templates",
@@ -51,10 +53,10 @@ return {
 			time_format = "%H:%M",
 		},
 
-        daily_notes = {
-            folder = "06 - Daily",
-            date_format = "%Y-%m-%d",
-            template = "99 - Meta/Templates/Template-Daily"
-        },
+		daily_notes = {
+			folder = "06 - Daily",
+			date_format = "%Y-%m-%d",
+			template = "99 - Meta/Templates/Template-Daily",
+		},
 	},
 }

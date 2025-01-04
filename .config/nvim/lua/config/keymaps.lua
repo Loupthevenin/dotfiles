@@ -6,7 +6,6 @@
 -- local discipline = require("craft.discipline")
 -- discipline.cowboy()
 
-
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -26,7 +25,6 @@ keymap.set("n", "<Leader>d", '"_d')
 keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
-
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
@@ -102,5 +100,13 @@ keymap.set("n", "<leader>ot", ":ObsidianTemplate <cr>")
 keymap.set("n", "<leader>otn", ":ObsidianTemplate Template-Note<cr>")
 
 -- search for files in full vault
-keymap.set("n", "<leader>os", ":Telescope find_files search_dirs={" .. obsidian_vault_dir .. "}<cr>", { silent = true })
-keymap.set("n", "<leader>oz", ":Telescope live_grep search_dirs={" .. obsidian_vault_dir .. "}<cr>", { silent = true })
+keymap.set("n", "<leader>os", function()
+	require("fzf-lua").files({
+		cwd = obsidian_vault_dir,
+	})
+end, { silent = true })
+keymap.set("n", "<leader>oz", function()
+	require("fzf-lua").live_grep({
+		cwd = obsidian_vault_dir,
+	})
+end, { silent = true })
