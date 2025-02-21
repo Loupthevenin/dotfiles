@@ -149,9 +149,12 @@ return {
 				clangd = {
 					enabled = true,
 					on_attach = function(client, _bufnr)
+						local filename = vim.api.nvim_buf_get_name(_bufnr)
 						-- Désactive le formateur LSP
-						client.server_capabilities.documentFormattingProvider = false
-						client.server_capabilities.documentRangeFormattingProvider = false
+						if filename:match("%.c$") or filename:match("%.h$") then
+							client.server_capabilities.documentFormattingProvider = false
+							client.server_capabilities.documentRangeFormattingProvider = false
+						end
 					end,
 					cmd = { "clangd", "--background-index", "--clang-tidy" },
 					root_dir = function(...)

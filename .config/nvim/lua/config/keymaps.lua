@@ -76,7 +76,7 @@ end, opts)
 -----------
 
 --- Path vers coffre Obsidian
-local obsidian_vault_dir = "~/obsidian/Loup"
+local obsidian_vault_dir = "/Users/loup/Library/Mobile Documents/iCloud~md~obsidian/Documents/Loup"
 
 -- navigate to vault
 keymap.set("n", "<leader>oo", ":cd " .. obsidian_vault_dir .. "<cr>", { silent = true })

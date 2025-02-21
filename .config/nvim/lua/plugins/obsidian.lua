@@ -21,7 +21,7 @@ return {
 		workspaces = {
 			{
 				name = "test",
-				path = "~/obsidian/Loup",
+				path = "/Users/loup/Library/Mobile Documents/iCloud~md~obsidian/Documents/Loup",
 			},
 		},
 		notes_subdir = "05 - Fleeting",
