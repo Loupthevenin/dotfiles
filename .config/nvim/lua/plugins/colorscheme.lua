@@ -9,4 +9,19 @@ return {
 			}
 		end,
 	},
+	{
+		"scottmckendry/cyberdream.nvim",
+		opts = function()
+			return {
+				transparent = true,
+			}
+		end,
+	},
+	{
+		"catppuccin/nvim",
+	},
+	{
+		"tiagovla/tokyodark.nvim",
+	},
 }
+

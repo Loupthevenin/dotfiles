@@ -13,13 +13,13 @@ return {
 		},
 		opts = { snippet_engine = "luasnip" },
 	},
-    -- Incremental rename
+	-- Incremental rename
 	{
 		"smjonas/inc-rename.nvim",
 		cmd = "IncRename",
 		config = true,
 	},
-    -- Refactoring tool
+	-- Refactoring tool
 	{
 		"ThePrimeagen/refactoring.nvim",
 		keys = {
@@ -41,7 +41,9 @@ return {
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
-		build = function() vim.fn["mkdp#util#install"]() end,
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 	-- Better increase/descrease
 	{
