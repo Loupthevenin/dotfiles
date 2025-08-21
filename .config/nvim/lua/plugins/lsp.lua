@@ -34,8 +34,6 @@ return {
 			}
 		end,
 		opts = {
-			inlay_hints = { enabled = false },
-			---@type lspconfig.options
 			servers = {
 				cssls = {},
 				tailwindcss = {
@@ -45,7 +43,7 @@ return {
 				},
 				tsserver = {
 					root_dir = function(...)
-						return require("lspconfig.util").root_pattern(".git")(...)
+						return require("lspconfig.util").root_pattern("tsconfig.json", ".git")(...)
 					end,
 					single_file_support = false,
 					settings = {
@@ -59,6 +57,11 @@ return {
 								includeInlayFunctionLikeReturnTypeHints = true,
 								includeInlayEnumMemberValueHints = true,
 							},
+							preferences = {
+								includeCompletionsForModuleExports = true,
+								includeCompletionsForImportStatements = true,
+								importModuleSpecifier = "non-relative",
+							},
 						},
 						javascript = {
 							inlayHints = {
@@ -69,6 +72,11 @@ return {
 								includeInlayPropertyDeclarationTypeHints = true,
 								includeInlayFunctionLikeReturnTypeHints = true,
 								includeInlayEnumMemberValueHints = true,
+							},
+							preferences = {
+								includeCompletionsForModuleExports = true,
+								includeCompletionsForImportStatements = true,
+								importModuleSpecifier = "non-relative",
 							},
 						},
 					},
