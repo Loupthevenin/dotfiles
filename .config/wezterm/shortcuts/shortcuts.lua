@@ -1,10 +1,9 @@
 local wezterm = require("wezterm")
--- local commands = require("commands")
 
 local shortcuts = {}
 
 shortcuts.binds = {
-	-- Rename Pane
+	-- Rename Tab
 	{
 		key = "R",
 		mods = "CTRL|SHIFT",
