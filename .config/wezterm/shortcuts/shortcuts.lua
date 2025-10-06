@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local commands = require("commands")
 
 local shortcuts = {}
 
@@ -28,17 +29,12 @@ shortcuts.binds = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
 	},
-	-- {
-	-- 	key = "T",
-	-- 	mods = "CTRL|SHIFT",
-	-- 	action = wezterm.action_callback(function(window)
-	-- 		if commands.toggle_transparency then
-	-- 			commands.toggle_transparency.action(window) -- Appelle la fonction action
-	-- 		else
-	-- 			wezterm.log_error("La commande 'toggle_transparency' est toujours nil.")
-	-- 		end
-	-- 	end),
-	-- },
+	-- 🔥 Toggle transparency
+	{
+		key = "T",
+		mods = "CTRL|SHIFT",
+		action = commands.toggle_transparency.action,
+	},
 }
 
 return shortcuts
